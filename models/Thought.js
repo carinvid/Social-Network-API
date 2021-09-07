@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 let dateFormat = require("dateFormat");
 
@@ -63,7 +63,7 @@ const ThoughtSchema = new Schema(
   }
 );
 
-// To return the length of reaction Comments using a Virtual
+// a virtual that will show the amount of reactions a thought has
 ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });

@@ -2,27 +2,27 @@ const router = require("express").Router();
 
 // Imported Constants
 const {
-  createThought,
+  addThought,
   getAllThoughts,
-  getThoughtsbyId,
+  getThoughtsById,
   updateThought,
-  createReaction,
+  addReaction,
   deleteThought,
 } = require("../../controllers/thought-controller");
 
 // Root Routes
-router.route("/").post(createThought).get(getAllThoughts);
+router.route("/").post(addThought).get(getAllThoughts);
 
 // Routing for Reaction Creation
-router.route("/:thoughtsbyId/reactions").post(createReaction);
+router.route("/:thoughtsbyId/reactions").post(addReaction);
 
 // Seperate Routing for Reaction Deletion
-router.route("/:thoughtbyId/reactions/:reactionId").delete(deleteReaction);
+router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
 
-// /api/pizzas/:id
+// /id
 router
   .route("/:id")
-  .get(getThoughtsbyId)
+  .get(getThoughtsById)
   .put(updateThought)
   .delete(deleteThought);
 
