@@ -4,26 +4,26 @@ const router = require("express").Router();
 const {
   createThought,
   getAllThoughts,
-  getThoughtsID,
+  getThoughtsbyId,
   updateThought,
   deleteThought,
   createReaction,
-  deleteReaction,
+  deleteThought,
 } = require("../../controllers/thought-controller");
 
 // Root Routes
 router.route("/").post(createThought).get(getAllThoughts);
 
 // Routing for Reaction Creation
-router.route("/:thoughtId/reactions").post(createReaction);
+router.route("/:thoughtsbyId/reactions").post(createReaction);
 
 // Seperate Routing for Reaction Deletion
-router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
+router.route("/:thoughtbyId/reactions/:reactionId").delete(deleteReaction);
 
-// Routing @ Specific ID
+// Routing by id
 router
   .route("/:id")
-  .get(getThoughtsID)
+  .get(getThoughtsbyId)
   .put(updateThought)
   .delete(deleteThought);
 
