@@ -26,7 +26,7 @@ const userController = {
       });
   },
 
-  // To GET a User @ _ID
+  // To GET a User by id
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
@@ -47,7 +47,7 @@ const userController = {
       });
   },
 
-  // To PUT (Update) User @ _ID
+  // Update User by id
   updateUser({ params, body }, res) {
     User.findOneAndUpdate(
       {
@@ -69,7 +69,7 @@ const userController = {
       });
   },
 
-  // To DELETE a User @ _ID
+  // To DELETE a User by id
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then((dbData) => {
@@ -83,7 +83,7 @@ const userController = {
           { $pull: { friends: params.id } }
         )
           .then(() => {
-            // To delete USER and Cooresponding friends
+            // To delete USER and friends
             Thought.deleteMany({ username: dbData.username })
               .then(() => {
                 res.json({ message: "User deleted" });
@@ -104,7 +104,7 @@ const userController = {
       });
   },
 
-  // To PUT (Update)/ Add a friend to linking User Profile
+  // update a friend
   addFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
@@ -124,7 +124,7 @@ const userController = {
       });
   },
 
-  // To DELETE a friend from linking User Profile
+  // deleting a friend
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
