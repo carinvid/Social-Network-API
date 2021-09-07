@@ -29,25 +29,7 @@ const thoughtController = {
       })
       .then((dbData) => {
         if (!dbData) {
-          res.status(404).json({ message: "No pizza found with this id!" });
-          return;
-        }
-        res.json(dbData);
-      })
-      .catch((err) => res.json(err));
-  },
-
-  // To GET a Thought @ _ID
-  getThoughtsID({ params }, res) {
-    Thought.findOne({ _id: params.id })
-      .populate({
-        path: "reactions",
-        select: "-__v",
-      })
-      .select("-__v")
-      .then((dbData) => {
-        if (!dbData) {
-          res.status(404).json({ message: "No pizza found with this id!" });
+          res.status(404).json({ message: "No data found with this id!" });
           return;
         }
         res.json(dbData);
@@ -58,7 +40,28 @@ const thoughtController = {
       });
   },
 
-  // To PUT (Update) Thoughts Reaction @ _ID
+  // To GET a Thought by id
+  getThoughtbyId({ params }, res) {
+    Thought.findOne({ _id: params.id })
+      .populate({
+        path: "reactions",
+        select: "-__v",
+      })
+      .select("-__v")
+      .then((dbData) => {
+        if (!dbData) {
+          res.status(404).json({ message: "No data found with this id!" });
+          return;
+        }
+        res.json(dbData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  },
+
+  // To PUT (Update) Thoughts Reaction by id
   updateThought({ params, body }, res) {
     Thought.findOneAndUpdate(
       {
@@ -80,7 +83,7 @@ const thoughtController = {
       });
   },
 
-  // To create a Reaction response to a Thought connecting via _ID
+  // To create a Reaction response to a Thought connecting via _id
   createReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
@@ -100,7 +103,7 @@ const thoughtController = {
       });
   },
 
-  // To DELETE a Thought @ _ID
+  // To DELETE a Thought by id
   deleteThought({ params }, res) {
     Thought.findOneAndDelete({ _id: params.id })
       .then((dbData) => {
@@ -116,7 +119,7 @@ const thoughtController = {
       });
   },
 
-  // To delete a reaction at cooresponding _ID
+  // To delete a reaction at cooresponding by id
   deleteReaction({ params }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
