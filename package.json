@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "dateformat": "^4.5.1",
     "express": "^4.17.1",
     "init": "^0.1.2",
     "inquirer": "^8.1.2",
+    "mongoose": "^6.0.5",
     "mongose": "0.0.2-security"
   },
   "devDependencies": {},

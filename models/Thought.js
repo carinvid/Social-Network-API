@@ -4,7 +4,7 @@ let dateFormat = require("dateFormat");
 
 const ReactionSchema = new Schema(
   {
-    // To add ID for ReactionID
+    // To add ID for ReactionId
     reactionId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
@@ -24,6 +24,7 @@ const ReactionSchema = new Schema(
       get: (createdAtVal) => dateFormat(createdAtVal, "mm/dd/yyyy"),
     },
   },
+
   {
     // Model Configuration
     toJSON: {

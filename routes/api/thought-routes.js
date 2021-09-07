@@ -6,7 +6,6 @@ const {
   getAllThoughts,
   getThoughtsbyId,
   updateThought,
-  deleteThought,
   createReaction,
   deleteThought,
 } = require("../../controllers/thought-controller");
@@ -20,7 +19,7 @@ router.route("/:thoughtsbyId/reactions").post(createReaction);
 // Seperate Routing for Reaction Deletion
 router.route("/:thoughtbyId/reactions/:reactionId").delete(deleteReaction);
 
-// Routing by id
+// /api/pizzas/:id
 router
   .route("/:id")
   .get(getThoughtsbyId)
