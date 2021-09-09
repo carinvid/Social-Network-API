@@ -8,6 +8,7 @@ const {
   updateThought,
   addReaction,
   deleteThought,
+  deleteReaction,
 } = require("../../controllers/thought-controller");
 
 // Root Routes

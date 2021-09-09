@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(require("./routes"));
 
 mongoose.connect("mongodb://localhost/social-api", {
-  useFindAndModify: false,
+  // useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
